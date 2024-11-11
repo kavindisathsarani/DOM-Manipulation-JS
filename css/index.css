@@ -4,25 +4,12 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  height: 100vh;
   justify-content: center;
   position: relative;
   background-image: url("/assests/images/f2ac81f39118c14d68c15fbbd253a40f.jpg");
   background-size: cover;
   background-position: center;
   text-align: center;
-  overflow: hidden;
-}
-
-/* Overlay for better contrast */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
 }
 
 h1 {
@@ -88,79 +75,179 @@ h1 {
   color: #2980b9;
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .profile img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .list {
-    width: 90%;
-  }
+.card {
+  width: 800px !important;
+  height: 300px !important;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-/* Media queries for responsiveness */
+/* Container to stack cards in a column */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Space between each card */
+  padding: 20px;
+}
 
-/* Large desktops */
+/* Card styling */
+.card {
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Image styling */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Hidden link overlay */
+.link-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+/* Show overlay on card hover */
+.card:hover .link-overlay {
+  opacity: 1;
+}
+
+/* Link styling */
+.link-overlay a {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #2980b9;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.link-overlay a:hover {
+  background-color: #3498db;
+}
+
+/* Responsive Media Queries */
+
+/* For screens 1200px and larger (desktops) */
 @media (min-width: 1200px) {
   h1 {
+    font-size: 4rem;
+  }
+  .profile img {
+    width: 250px;
+    height: 250px;
+  }
+  .list {
+    width: 250px;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* .card {
+    width: 300px !important;
+    height: 200px !important;
+  } */
+}
+
+/* For screens between 768px and 1199px (laptops/tablets) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  h1 {
     font-size: 3.5rem;
-  }
-  .profile img {
-    width: 300px;
-    height: 300px;
-  }
-  .list {
-    width: 350px;
-  }
-}
-
-/* Laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
-  h1 {
-    font-size: 3rem;
-  }
-  .profile img {
-    width: 270px;
-    height: 270px;
-  }
-  .list {
-    width: 320px;
-  }
-}
-
-/* Tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-  h1 {
-    font-size: 2.5rem;
   }
   .profile img {
     width: 220px;
     height: 220px;
   }
   .list {
-    width: 90%;
+    width: 220px;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .card {
+    width: 270px !important;
+    height: 180px !important;
   }
 }
 
-/* Mobile devices */
-@media (max-width: 767px) {
+/* For screens between 480px and 767px (tablets) */
+@media (min-width: 480px) and (max-width: 767px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .profile img {
     width: 180px;
     height: 180px;
   }
   .list {
-    width: 95%;
+    width: 180px;
   }
-  .list li {
-    margin: 10px 0;
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    width: 240px !important;
+    height: 160px !important;
+  }
+}
+
+/* For screens smaller than 480px (mobiles) */
+@media (max-width: 479px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .profile img {
+    width: 150px;
+    height: 150px;
+  }
+  .list {
+    width: 160px;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    width: 220px !important;
+    height: 140px !important;
   }
 }
